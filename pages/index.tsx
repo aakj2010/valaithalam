@@ -26,8 +26,8 @@ export default function Home() {
               width={1600}
               height={800}
               priority
-              placeholder="blur"
-              blurDataURL={Logo}
+              // placeholder="blur"
+              // blurDataURL={Logo}
             />
             <HeroBanner />
           </section>

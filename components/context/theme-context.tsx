@@ -8,17 +8,17 @@ interface ThemeContextProps {
 
 // Create the context with default values
 export const ThemeContext = createContext<ThemeContextProps>({
-  theme: "light",
+  theme: "dark", // Default theme is now dark
   toggleTheme: () => {},
 });
 
 // ThemeProvider component
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
-  const [theme, setTheme] = useState<string>("light");
+  const [theme, setTheme] = useState<string>("dark"); // Default theme is set to dark
 
   // Load theme from localStorage when the component mounts
   useEffect(() => {
-    const savedTheme = localStorage.getItem("theme") || "light";
+    const savedTheme = localStorage.getItem("theme") || "dark"; // Fallback to dark
     setTheme(savedTheme);
     document.documentElement.classList.toggle("dark", savedTheme === "dark");
   }, []);

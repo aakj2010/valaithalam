@@ -9,7 +9,7 @@ import { ThemeContext } from "../context/theme-context";
 interface MenuItem {
   href?: string;
   label: string;
-  links?: { href: string; label: string }[];
+  links?: { href?: string; label: string }[];
 }
 
 const Header: React.FC = () => {
@@ -43,77 +43,53 @@ const Header: React.FC = () => {
     {
       label: "Websites",
       links: [
-        { href: "", label: "Web design" },
-        { href: "", label: "Web development" },
-        { href: "", label: "Search Engine Optimization" },
-        { href: "", label: "Web hosting" },
-        {
-          href: "",
-          label: "Get your own email domain",
-        },
-        {
-          href: "",
-          label: "Graphic Design for Product Listing",
-        },
-        {
-          href: "",
-          label: "Product & Location Photography",
-        },
-        {
-          href: "/services/ad-videos-for-social-media-marketing",
-          label: "Ad Videos for social media marketing",
-        },
+        { label: "Web design" },
+        { label: "Web development" },
+        { label: "Search Engine Optimization" },
+        { label: "Web hosting" },
+        { label: "Get your own email domain" },
+        { label: "Graphic Design for Product Listing"},
+        { label: "Product & Location Photography" },
+        { label: "Ad Videos for social media marketing"},
       ],
     },
     {
       label: "Mobile Apps",
       links: [
-        {
-          href: "/services/web-development",
-          label: "Apps for both Android and iOS",
-        },
-        {
-          href: "/services/mobile-development",
-          label: "Mobile Responsive Websites",
-        },
-        { href: "/services/seo", label: "SMS Integration" },
-        { href: "/services/seo", label: "Push Notification Services" },
-        { href: "/services/seo", label: "Redesign of Mobile apps" },
-        { href: "/services/seo", label: "Mobile Design - Prototypes" },
+        { label: "Apps for both Android and iOS" },
+        { label: "Mobile Responsive Websites"},
+        { label: "SMS Integration" },
+        { label: "Push Notification Services" },
+        { label: "Redesign of Mobile apps" },
+        { label: "Mobile Design - Prototypes" },
       ],
     },
     {
       label: "Industry",
       links: [
-        { href: "/services/web-development", label: "Export & Import Sector" },
-        { href: "/services/mobile-development", label: "Jewellery" },
-        { href: "/services/seo", label: "Schools & Colleges" },
-        { href: "/services/seo", label: "Hospitals" },
-        { href: "/services/seo", label: "Financial Institutions" },
-        { href: "/services/seo", label: "Photography" },
-        { href: "/services/seo", label: "Youtubers" },
-        { href: "/services/seo", label: "Showrooms" },
-        { href: "/services/seo", label: "Travel & Tourism" },
-        { href: "/services/seo", label: "Interior Decorators" },
-        { href: "/services/seo", label: "Manufacturing Sector" },
-        { href: "/services/seo", label: "Independent Educators" },
+        { label: "Export & Import Sector" },
+        { label: "Jewellery" },
+        { label: "Schools & Colleges" },
+        { label: "Hospitals" },
+        { label: "Financial Institutions" },
+        { label: "Photography" },
+        { label: "Youtubers" },
+        { label: "Showrooms" },
+        { label: "Travel & Tourism" },
+        { label: "Interior Decorators" },
+        { label: "Manufacturing Sector" },
+        { label: "Independent Educators" },
       ],
     },
     {
       label: "Solutions",
       links: [
-        {
-          href: "/services/web-development",
-          label: "Content Management Systems",
-        },
-        {
-          href: "/services/mobile-development",
-          label: "Enterprise Resource Planning",
-        },
-        { href: "/services/seo", label: "E-Commerce Web Setup" },
-        { href: "/services/seo", label: "Free Tools for Target Customers" },
-        { href: "/services/seo", label: "Payment Integrations" },
-        { href: "/services/seo", label: "Website Analytics" },
+        { label: "Content Management Systems" },
+        { label: "Enterprise Resource Planning" },
+        { label: "E-Commerce Web Setup" },
+        { label: "Free Tools for Target Customers" },
+        { label: "Payment Integrations" },
+        { label: "Website Analytics" },
       ],
     },
     { href: "/", label: "Get Estimate" },
@@ -121,19 +97,19 @@ const Header: React.FC = () => {
 
   const renderDropdown = (
     menuName: string,
-    links: { href: string; label: string }[]
+    links: { href?: string; label: string }[]
   ): JSX.Element => (
     <ul
       className={`absolute z-10 overflow-hidden shadow-[0px_2px_6px_0px_rgba(0,0,0,0.09)] bg-menu_bg_light font-normal border dark:bg-menu_bg_dark dark:border-menu_border_dark border-menu_border_light left-0 mt-2 w-max rounded-[6px] transition-all ${
         dropdowns[menuName] ? "block" : "hidden"
       }`}
     >
-      {links.map(({ href, label }) => (
+      {links.map(({ label }) => (
         <li
           key={label}
           className="px-4 py-[6px] hover:bg-menu_hover_light hover:!font-medium dark:hover:bg-menu_hover_dark"
         >
-          <Link href={href}>{label}</Link>
+          <p>{label}</p>
         </li>
       ))}
     </ul>
