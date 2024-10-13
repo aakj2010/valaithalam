@@ -1,7 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Logo from "../../public/images/valaithalam-logo.svg";
+import darkLogo from "../../public/images/valaithalam-dark-logo.svg";
+import { ThemeContext } from "../context/theme-context";
 
 // Define types for the menu items
 interface MenuItem {
@@ -11,7 +13,7 @@ interface MenuItem {
 }
 
 const Header: React.FC = () => {
-  const [theme, setTheme] = useState<string>("light");
+  const { theme, toggleTheme } = useContext(ThemeContext);
   const [dropdowns, setDropdowns] = useState<{ [key: string]: boolean }>({
     websites: false,
     mobileApps: false,
@@ -22,21 +24,6 @@ const Header: React.FC = () => {
   const timeouts: Record<string, NodeJS.Timeout | null> = {
     websites: null,
     mobileApps: null,
-  };
-
-  useEffect(() => {
-    const savedTheme = localStorage.getItem("theme");
-    if (savedTheme) {
-      setTheme(savedTheme);
-      document.documentElement.classList.toggle("dark", savedTheme === "dark");
-    }
-  }, []);
-
-  const toggleTheme = (): void => {
-    const newTheme = theme === "light" ? "dark" : "light";
-    setTheme(newTheme);
-    localStorage.setItem("theme", newTheme);
-    document.documentElement.classList.toggle("dark", newTheme === "dark");
   };
 
   const handleMouseEnter = (menuName: string): void => {
@@ -56,20 +43,20 @@ const Header: React.FC = () => {
     {
       label: "Websites",
       links: [
-        { href: "/services/web-development", label: "Web design" },
-        { href: "/services/mobile-development", label: "Web development" },
-        { href: "/services/seo", label: "Search Engine Optimization" },
-        { href: "/services/web-hosting", label: "Web hosting" },
+        { href: "", label: "Web design" },
+        { href: "", label: "Web development" },
+        { href: "", label: "Search Engine Optimization" },
+        { href: "", label: "Web hosting" },
         {
-          href: "/services/get-your-own-email-domain",
+          href: "",
           label: "Get your own email domain",
         },
         {
-          href: "/services/graphic-design-for-product-listing",
+          href: "",
           label: "Graphic Design for Product Listing",
         },
         {
-          href: "/services/product-location-photography",
+          href: "",
           label: "Product & Location Photography",
         },
         {
@@ -137,7 +124,7 @@ const Header: React.FC = () => {
     links: { href: string; label: string }[]
   ): JSX.Element => (
     <ul
-      className={`absolute z-10 overflow-hidden shadow-[0px_4px_6px_0px_rgba(0,0,0,0.09)] bg-menu_bg_light font-normal border dark:bg-menu_bg_dark dark:border-menu_border_dark border-menu_border_light left-0 mt-2 w-max rounded-lg transition-all ${
+      className={`absolute z-10 overflow-hidden shadow-[0px_2px_6px_0px_rgba(0,0,0,0.09)] bg-menu_bg_light font-normal border dark:bg-menu_bg_dark dark:border-menu_border_dark border-menu_border_light left-0 mt-2 w-max rounded-[6px] transition-all ${
         dropdowns[menuName] ? "block" : "hidden"
       }`}
     >
@@ -154,12 +141,12 @@ const Header: React.FC = () => {
 
   return (
     <header className="max-w-screen-xl relative z-10 pt-[32px] mx-auto text-[13px] leading-[20px]">
-      <nav className="container bg-menu_bg_light dark:bg-menu_bg_dark font-medium rounded-[12px] lg:border-[0.5px] px-[6px] py-1 dark:border-menu_border_dark border-menu_border_light lg:w-max w-full mx-auto flex flex-col lg:flex-row lg:justify-between lg:items-center">
+      <nav className="container shadow-[0px_2px_6px_0px_rgba(0,0,0,0.09)] bg-menu_bg_light dark:bg-menu_bg_dark font-medium rounded-[12px] lg:border-[0.5px] p-[6px] dark:border-menu_border_dark border-menu_border_light lg:w-max w-full mx-auto flex flex-col lg:flex-row lg:justify-between lg:items-center">
         <div className="lg:w-max w-full flex justify-between">
           <Link href="/">
             <Image
-              className="dark:invert h-8 w-32 cursor-pointer"
-              src={Logo}
+              className="h-8 w-32 cursor-pointer"
+              src={theme === "light" ? Logo : darkLogo}
               alt="Valaithalam-Logo"
               width={120}
               height={32}
@@ -196,7 +183,7 @@ const Header: React.FC = () => {
                 onMouseEnter={() => handleMouseEnter(item.label.toLowerCase())}
                 onMouseLeave={() => handleMouseLeave(item.label.toLowerCase())}
               >
-                <button className="hover:bg-menu_hover_light z-0 rounded-[8px] dark:hover:bg-menu_hover_dark px-4 py-[6px]">
+                <button className="hover:bg-menu_hover_light z-0 rounded-[6px] dark:hover:bg-menu_hover_dark px-4 py-[6px]">
                   {item.label}
                 </button>
                 {renderDropdown(item.label.toLowerCase(), item.links)}
@@ -205,7 +192,7 @@ const Header: React.FC = () => {
               <li key={item.label}>
                 <Link
                   href={item.href!}
-                  className={`hover:bg-menu_hover_light z-0 rounded-[8px] dark:hover:bg-menu_hover_dark px-4 py-2 ${
+                  className={`hover:bg-menu_hover_light z-0 rounded-[6px] leading-[18px] dark:hover:bg-menu_hover_dark px-4 py-2 ${
                     item.label === "Get Estimate"
                       ? "dark:bg-button_bg_dark bg-button_bg_light text-button_text_light dark:text-button_text_dark dark:hover:text-button_text_light hover:text-button_text_dark"
                       : ""
@@ -221,10 +208,10 @@ const Header: React.FC = () => {
         {/* Theme Toggle Button */}
         <button
           onClick={toggleTheme}
-          className="w-8 h-8 flex items-center justify-center mx-2"
+          className="w-8 h-8 flex items-center justify-center ml-2"
         >
           <span className="material-icons" style={{ fontSize: "20px" }}>
-            {theme === "light" ? "dark_mode" : "light_mode"}
+            {theme === "light" ? "bedtime" : "light_mode"}
           </span>
         </button>
       </nav>

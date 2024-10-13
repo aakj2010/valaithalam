@@ -88,6 +88,8 @@ const config: Config = {
       borderColor: {
         menu_border_light: globalColors.zinc[300],
         menu_border_dark: globalColors.zinc[600],
+        button_secondary_dark: globalColors.zinc[600],
+        button_secondary_light: globalColors.zinc[800],
       },
       backgroundImage: {
         primary_h1_gradient_light: 'linear-gradient(180deg, #A1A1AA 0%, #09090B 100%)',
