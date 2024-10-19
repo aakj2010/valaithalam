@@ -100,7 +100,7 @@ const Header: React.FC = () => {
     links: { href?: string; label: string }[]
   ): JSX.Element => (
     <ul
-      className={`absolute z-10 overflow-hidden shadow-[0px_2px_6px_0px_rgba(0,0,0,0.09)] bg-menu_bg_light font-normal border dark:bg-menu_bg_dark dark:border-menu_border_dark border-menu_border_light left-0 mt-2 w-max rounded-[6px] transition-all ${
+      className={`lg:!absolute z-10 transition-all duration-500 ease-linear overflow-hidden shadow-[0px_2px_6px_0px_rgba(0,0,0,0.09)] bg-menu_bg_light font-normal dark:bg-menu_bg_dark dark:border-menu_border_dark border-menu_border_light left-0 mt-2 lg:!w-max lg:!min-w-[16rem] w-[90%] mx-auto rounded-[6px] ${
         dropdowns[menuName] ? "block" : "hidden"
       }`}
     >
@@ -116,9 +116,9 @@ const Header: React.FC = () => {
   );
 
   return (
-    <header className="max-w-screen-xl relative z-10 pt-[32px] mx-auto text-[13px] leading-[20px]">
-      <nav className="container shadow-[0px_2px_6px_0px_rgba(0,0,0,0.09)] bg-menu_bg_light dark:bg-menu_bg_dark font-medium rounded-[12px] lg:border-[0.5px] p-[6px] dark:border-menu_border_dark border-menu_border_light lg:w-max w-full mx-auto flex flex-col lg:flex-row lg:justify-between lg:items-center">
-        <div className="lg:w-max w-full flex justify-between">
+    <header className="max-w-screen-2xl relative z-10 lg:!fixed lg:!top-8 left-0 w-full !mx-auto text-[13px] leading-[20px]">
+      <nav className="container shadow-[0px_2px_6px_0px_rgba(0,0,0,0.09)] bg-menu_bg_light dark:bg-menu_bg_dark font-medium lg:!rounded-[12px] lg:border-[0.5px] lg:!p-[6px] p-3 dark:border-menu_border_dark border-menu_border_light lg:w-max w-full mx-auto flex flex-col lg:flex-row lg:justify-between lg:items-center">
+        <div className="lg:w-max w-full h-auto flex justify-between items-center">
           <Link href="/">
             <Image
               className="h-8 w-32 cursor-pointer"
@@ -131,10 +131,10 @@ const Header: React.FC = () => {
           </Link>
 
           {/* Mobile Menu Icon */}
-          <div className="block lg:hidden">
+          <div className="flex items-center justify-center lg:hidden">
             <button
               onClick={() => setMenuOpen(!menuOpen)}
-              className="text-2xl p-2"
+              className=""
             >
               {menuOpen ? (
                 <span className="material-icons">close</span>
@@ -165,7 +165,7 @@ const Header: React.FC = () => {
                 {renderDropdown(item.label.toLowerCase(), item.links)}
               </li>
             ) : (
-              <li key={item.label}>
+              <li key={item.label} className="mt-4 lg:!mt-0 ">
                 <Link
                   href={item.href!}
                   className={`hover:bg-menu_hover_light z-0 rounded-[6px] leading-[18px] dark:hover:bg-menu_hover_dark px-4 py-2 ${
@@ -184,7 +184,7 @@ const Header: React.FC = () => {
         {/* Theme Toggle Button */}
         <button
           onClick={toggleTheme}
-          className="w-8 h-8 flex items-center justify-center ml-2"
+          className="w-8 h-8 lg:!flex items-center justify-center ml-2 hidden"
         >
           <span className="material-icons" style={{ fontSize: "20px" }}>
             {theme === "light" ? "bedtime" : "light_mode"}

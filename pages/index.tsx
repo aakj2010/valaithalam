@@ -3,7 +3,6 @@ import Image from "next/image";
 import Header from "@/components/header/header";
 import HeroBanner from "@/components/hero-banner/hero-banner";
 import BgPattern from "../public/images/hero-banner-background-pattern.svg";
-import Logo from "../public/images/valaithalam-logo.svg";
 import DarkBgPattern from "../public/images/hero-banner-background-pattern-dark.svg";
 import { useContext } from "react";
 import { ThemeContext } from "@/components/context/theme-context";
@@ -13,7 +12,7 @@ export default function Home() {
 
   return (
     <div
-      className={`min-h-screen font-inter overflow-y-hidden dark:text-white text-black bg-website_light dark:bg-website_dark mx-auto items-center justify-items-center gap-16 font-[family-name:var(--font-geist-sans)]`}
+      className={`min-h-screen font-inter overflow-y-hidden dark:text-white text-black bg-website_light dark:bg-website_dark mx-auto items-center justify-items-center gap-16`}
     >
       <Header />
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
@@ -26,8 +25,6 @@ export default function Home() {
               width={1600}
               height={800}
               priority
-              // placeholder="blur"
-              // blurDataURL={Logo}
             />
             <HeroBanner />
           </section>

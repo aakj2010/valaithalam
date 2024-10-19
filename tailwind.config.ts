@@ -31,7 +31,7 @@ const config: Config = {
         menu_text_light: globalColors.zinc[900],
         menu_text_dark: globalColors.zinc[50],
         button_text_light: globalColors.zinc[50],
-        button_text_dark: globalColors.zinc[900], 
+        button_text_dark: globalColors.zinc[900],
         text_secondary_light: globalColors.zinc[600],
         text_secondary_dark: globalColors.zinc[400],
         background: "hsl(var(--background))",
@@ -82,7 +82,7 @@ const config: Config = {
         menu_bg_dark: globalColors.zinc[900],
         menu_hover_light: globalColors.zinc[200],
         menu_hover_dark: globalColors.zinc[700],
-        button_bg_light: globalColors.zinc[800], 
+        button_bg_light: globalColors.zinc[800],
         button_bg_dark: globalColors.zinc[50],
       },
       borderColor: {
@@ -92,13 +92,18 @@ const config: Config = {
         button_secondary_light: globalColors.zinc[800],
       },
       backgroundImage: {
-        primary_h1_gradient_light: 'linear-gradient(180deg, #A1A1AA 0%, #09090B 100%)',
-        primary_h1_gradient_dark: 'linear-gradient(180deg, #FAFAFA 0%, #71717A 100%)',
+        primary_h1_gradient_light:
+          "linear-gradient(180deg, #A1A1AA 0%, #09090B 100%)",
+        primary_h1_gradient_dark:
+          "linear-gradient(180deg, #FAFAFA 0%, #71717A 100%)",
       },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+      },
+      screens: {
+        "3xl": "1680px",
       },
     },
   },

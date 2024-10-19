@@ -4,7 +4,7 @@ import React from "react";
 const HeroBanner = () => {
   return (
     <div className="max-w-screen-2xl flex flex-col justify-center items-center h-screen overflow-y-hidden relative mx-auto">
-      <h1 className="lg:!text-[80px] 2xl:!text-[108px] font-medium leading-[90px] 2xl:leading-[124px] text-center">
+      <h1 className="text-[34px] leading-[42px] lg:!text-[80px] 3xl:!text-[108px] font-medium lg:leading-[90px] 3xl:leading-[124px] text-center">
         <span className="bg-clip-text text-transparent bg-primary_h1_gradient_light dark:bg-primary_h1_gradient_dark">
           Building Websites
         </span>{" "}
@@ -18,7 +18,7 @@ const HeroBanner = () => {
           your revenue!
         </span>
       </h1>
-      <p className="text-[20px] 2xl:!text-[26px] 2xl:!leading-[36px] leading-[28px] text-center lg:!w-3/5 mx-auto lg:!mt-7 2xl:!mt-[52px] mt-14 lg:!mb-12 2xl:!mb-20 text-text_secondary_light dark:text-text_secondary_dark">
+      <p className="text-[20px] 3xl:!text-[26px] 3xl:!leading-[36px] leading-[28px] text-center lg:!w-3/5 mx-auto lg:!mt-7 2xl:!mt-[52px] mt-14 lg:!mb-12 2xl:!mb-20 text-text_secondary_light dark:text-text_secondary_dark">
         We craft websites and mobile apps for businesses, professionals, and
         creators who wants to embrace the power of converting visitors to
         customers.
