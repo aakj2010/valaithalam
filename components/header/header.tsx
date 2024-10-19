@@ -116,7 +116,7 @@ const Header: React.FC = () => {
   );
 
   return (
-    <header className="max-w-screen-2xl relative z-10 lg:!fixed lg:!top-8 left-0 w-full !mx-auto text-[13px] leading-[20px]">
+    <header className=" z-10 !fixed lg:!top-8 left-0 w-full !mx-auto text-[13px] leading-[20px]">
       <nav className="container shadow-[0px_2px_6px_0px_rgba(0,0,0,0.09)] bg-menu_bg_light dark:bg-menu_bg_dark font-medium lg:!rounded-[12px] lg:border-[0.5px] lg:!p-[6px] p-3 dark:border-menu_border_dark border-menu_border_light lg:w-max w-full mx-auto flex flex-col lg:flex-row lg:justify-between lg:items-center">
         <div className="lg:w-max w-full h-auto flex justify-between items-center">
           <Link href="/">

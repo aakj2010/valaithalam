@@ -4,13 +4,12 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
-        <title>Build Your Website</title>
+        
         <link
           href="https://fonts.googleapis.com/icon?family=Material+Icons"
           rel="stylesheet"
         />
         <meta charSet="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta
           name="description"
           content="Valaithalam offers professional web design, web development, mobile app development, and SEO services. Get your website and mobile app developed today!"

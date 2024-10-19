@@ -3,7 +3,7 @@ import React from "react";
 
 const HeroBanner = () => {
   return (
-    <div className="max-w-screen-2xl flex flex-col justify-center items-center h-screen overflow-y-hidden relative mx-auto">
+    <div className="max-w-screen-2xl flex flex-col justify-center items-center !h-screen overflow-y-hidden relative mx-auto">
       <h1 className="text-[34px] leading-[42px] lg:!text-[80px] 3xl:!text-[108px] font-medium lg:leading-[90px] 3xl:leading-[124px] text-center">
         <span className="bg-clip-text text-transparent bg-primary_h1_gradient_light dark:bg-primary_h1_gradient_dark">
           Building Websites
@@ -23,7 +23,7 @@ const HeroBanner = () => {
         creators who wants to embrace the power of converting visitors to
         customers.
       </p>
-      <div className="mx-auto w-max flex flex-col md:!flex-row gap-3">
+      <div className="mx-auto mt-8 sm:!mt-0 sm:!w-max w-[90%] flex flex-col md:!flex-row gap-3">
         <button className="shadow-[0px_2px_6px_0px_rgba(0,0,0,0.09)] font-semibold dark:bg-button_bg_dark bg-button_bg_light text-button_text_light dark:text-button_text_dark dark:hover:text-button_text_light hover:text-button_text_dark px-4 py-2.5 rounded-[8px] hover:bg-menu_hover_light dark:hover:bg-menu_hover_dark ">
         Get Your Estimate
         </button>
