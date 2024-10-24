@@ -10,6 +10,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <Head>
           <title>Build Your Website</title>
           <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <meta name="google-site-verification" content="h0REel1kPdXSD1mE5riNGHzwXJum3ZNoUrdcd3uJLaQ" />
         </Head>
         <link
           rel="preload"
