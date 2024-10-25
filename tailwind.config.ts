@@ -1,4 +1,6 @@
 import type { Config } from "tailwindcss";
+import type { PluginAPI } from "tailwindcss/types/config";
+
 const globalColors = {
   zinc: {
     50: "#fafafa",
@@ -107,6 +109,21 @@ const config: Config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    require("tailwindcss-animate"),
+    function ({ addUtilities }: PluginAPI) {
+      addUtilities({
+        ".scrollbar-hide": {
+          /* Hide scrollbar for WebKit browsers (Chrome, Safari, etc.) */
+          "&::-webkit-scrollbar": {
+            display: "none",
+          },
+          /* Hide scrollbar for IE, Edge, and Firefox */
+          "-ms-overflow-style": "none" /* IE and Edge */,
+          "scrollbar-width": "none" /* Firefox */,
+        },
+      });
+    },
+  ],
 };
 export default config;

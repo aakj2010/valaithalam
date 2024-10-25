@@ -19,6 +19,7 @@ const Header: React.FC = () => {
     mobileApps: false,
   });
   const [menuOpen, setMenuOpen] = useState(false); // State to track mobile menu
+  const [showForm, setShowForm] = useState(false); // To toggle form display
 
   // Declare timeouts type using Record
   const timeouts: Record<string, NodeJS.Timeout | null> = {
@@ -48,16 +49,16 @@ const Header: React.FC = () => {
         { label: "Search Engine Optimization" },
         { label: "Web hosting" },
         { label: "Get your own email domain" },
-        { label: "Graphic Design for Product Listing"},
+        { label: "Graphic Design for Product Listing" },
         { label: "Product & Location Photography" },
-        { label: "Ad Videos for social media marketing"},
+        { label: "Ad Videos for social media marketing" },
       ],
     },
     {
       label: "Mobile Apps",
       links: [
         { label: "Apps for both Android and iOS" },
-        { label: "Mobile Responsive Websites"},
+        { label: "Mobile Responsive Websites" },
         { label: "SMS Integration" },
         { label: "Push Notification Services" },
         { label: "Redesign of Mobile apps" },
@@ -132,10 +133,7 @@ const Header: React.FC = () => {
 
           {/* Mobile Menu Icon */}
           <div className="flex items-center justify-center lg:hidden">
-            <button
-              onClick={() => setMenuOpen(!menuOpen)}
-              className=""
-            >
+            <button onClick={() => setMenuOpen(!menuOpen)} className="">
               {menuOpen ? (
                 <span className="material-icons">close</span>
               ) : (
@@ -166,7 +164,7 @@ const Header: React.FC = () => {
               </li>
             ) : (
               <li key={item.label} className="mt-4 lg:!mt-0 ">
-                <Link
+                {/* <Link
                   href={item.href!}
                   className={`hover:bg-menu_hover_light z-0 rounded-[6px] leading-[18px] dark:hover:bg-menu_hover_dark px-4 py-2 ${
                     item.label === "Get Estimate"
@@ -175,7 +173,15 @@ const Header: React.FC = () => {
                   }`}
                 >
                   {item.label}
-                </Link>
+                </Link> */}
+                {item.label === "Get Estimate" && (
+                  <button
+                    className="hover:bg-menu_hover_light z-0 rounded-[6px] leading-[18px] dark:hover:bg-menu_hover_dark px-4 py-2 dark:bg-button_bg_dark bg-button_bg_light text-button_text_light dark:text-button_text_dark dark:hover:text-button_text_light hover:text-button_text_dark"
+                    onClick={() => setShowForm(true)} // Show form on click
+                  >
+                    {item.label}
+                  </button>
+                )}
               </li>
             )
           )}
@@ -191,6 +197,27 @@ const Header: React.FC = () => {
           </span>
         </button>
       </nav>
+      {/* Google Form in iframe */}
+      {showForm && (
+        <div className="fixed inset-0 bg-black bg-opacity-90 h-screen flex justify-center">
+          <div className="p-6 rounded-md relative h-full w-max mx-auto overflow-y-auto !scrollbar-hide">
+            <button
+              onClick={() => setShowForm(false)} // Close form
+              className="sticky top-2 !right-0 z-0 rounded-[6px] leading-[18px] px-4 py-2 hover:bg-menu_hover_light dark:hover:bg-menu_hover_dark dark:bg-button_bg_dark bg-button_bg_light text-button_text_light dark:text-button_text_dark dark:hover:text-button_text_light hover:text-button_text_dark"
+            >
+              <span className="material-icons">close</span>
+            </button>
+            <iframe
+              src="https://docs.google.com/forms/d/e/1FAIpQLScHuZKT_kQySgyym-nGxO2bPdFg_Mj1XesZo8QlfTTDdGBwow/viewform?embedded=true"
+              width="640"
+              height="1439"
+              className="lg:!w-[40rem] w-full overflow-hidden !scrollbar-hide z-0 rounded-[6px] leading-[18px] px-4 py-2 dark:border-menu_border_dark border-menu_border_light"
+            >
+              Loading…
+            </iframe>
+          </div>
+        </div>
+      )}
     </header>
   );
 };

@@ -1,7 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+*{
+  scrollbar-width: 5px !important;
+}
 :root {
   --background: #ffffff;
   --foreground: #171717;
