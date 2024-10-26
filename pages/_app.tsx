@@ -1,3 +1,4 @@
+import { FormProvider } from "@/components/context/form-context";
 import { ThemeProvider } from "@/components/context/theme-context";
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
@@ -7,49 +8,54 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <ThemeProvider>
-        <Head>
-          <title>Build Your Website</title>
-          <meta name="viewport" content="width=device-width, initial-scale=1" />
-          <meta
-            name="google-site-verification"
-            content="h0REel1kPdXSD1mE5riNGHzwXJum3ZNoUrdcd3uJLaQ"
+        <FormProvider>
+          <Head>
+            <title>Build Your Website</title>
+            <meta
+              name="viewport"
+              content="width=device-width, initial-scale=1"
+            />
+            <meta
+              name="google-site-verification"
+              content="h0REel1kPdXSD1mE5riNGHzwXJum3ZNoUrdcd3uJLaQ"
+            />
+          </Head>
+          <link
+            rel="preload"
+            href="/images/hero-banner-background-pattern.svg"
+            as="image"
           />
-        </Head>
-        <link
-          rel="preload"
-          href="/images/hero-banner-background-pattern.svg"
-          as="image"
-        />
-        <link
-          rel="preload"
-          href="/images/hero-banner-background-pattern-dark.svg"
-          as="image"
-        />
-        {/* <link
+          <link
+            rel="preload"
+            href="/images/hero-banner-background-pattern-dark.svg"
+            as="image"
+          />
+          {/* <link
           rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
         /> */}
-        <link
-          rel="preload"
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
-          as="style"
-          onLoad={() => {
-            const linkElement = document.querySelector(
-              'link[rel="preload"]'
-            ) as HTMLLinkElement;
-            if (linkElement) {
-              linkElement.rel = "stylesheet";
-            }
-          }}
-        />
-        <noscript>
           <link
-            rel="stylesheet"
+            rel="preload"
             href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+            as="style"
+            onLoad={() => {
+              const linkElement = document.querySelector(
+                'link[rel="preload"]'
+              ) as HTMLLinkElement;
+              if (linkElement) {
+                linkElement.rel = "stylesheet";
+              }
+            }}
           />
-        </noscript>
+          <noscript>
+            <link
+              rel="stylesheet"
+              href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+            />
+          </noscript>
 
-        <Component {...pageProps} />
+          <Component {...pageProps} />
+        </FormProvider>
       </ThemeProvider>
     </>
   );

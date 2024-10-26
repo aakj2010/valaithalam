@@ -1,9 +1,10 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useContext } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Logo from "../../public/images/valaithalam-logo.svg";
 import darkLogo from "../../public/images/valaithalam-dark-logo.svg";
 import { ThemeContext } from "../context/theme-context";
+import { FormContext } from "../context/form-context";
 
 // Define types for the menu items
 interface MenuItem {
@@ -19,8 +20,7 @@ const Header: React.FC = () => {
     mobileApps: false,
   });
   const [menuOpen, setMenuOpen] = useState(false); // State to track mobile menu
-  const [showForm, setShowForm] = useState(false); // To toggle form display
-
+  const { showForm, toggleForm } = useContext(FormContext);
   // Declare timeouts type using Record
   const timeouts: Record<string, NodeJS.Timeout | null> = {
     websites: null,
@@ -177,7 +177,7 @@ const Header: React.FC = () => {
                 {item.label === "Get Estimate" && (
                   <button
                     className="hover:bg-menu_hover_light z-0 rounded-[6px] leading-[18px] dark:hover:bg-menu_hover_dark px-4 py-2 dark:bg-button_bg_dark bg-button_bg_light text-button_text_light dark:text-button_text_dark dark:hover:text-button_text_light hover:text-button_text_dark"
-                    onClick={() => setShowForm(true)} // Show form on click
+                    onClick={() => toggleForm()} // Show form on click
                   >
                     {item.label}
                   </button>
@@ -202,7 +202,7 @@ const Header: React.FC = () => {
         <div className="fixed inset-0 bg-black bg-opacity-90 h-screen flex justify-center">
           <div className="p-6 rounded-md relative h-full w-max mx-auto overflow-y-auto !scrollbar-hide">
             <button
-              onClick={() => setShowForm(false)} // Close form
+              onClick={() => toggleForm()} // Close form
               className="sticky top-2 !right-0 z-0 rounded-[6px] leading-[18px] px-4 py-2 hover:bg-menu_hover_light dark:hover:bg-menu_hover_dark dark:bg-button_bg_dark bg-button_bg_light text-button_text_light dark:text-button_text_dark dark:hover:text-button_text_light hover:text-button_text_dark"
             >
               <span className="material-icons">close</span>
